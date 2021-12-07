@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Jashwanth-Gowda-R/Node.js-Crash-Course/issues"
   },
-  "homepage": "https://github.com/Jashwanth-Gowda-R/Node.js-Crash-Course#readme"
+  "homepage": "https://github.com/Jashwanth-Gowda-R/Node.js-Crash-Course#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
