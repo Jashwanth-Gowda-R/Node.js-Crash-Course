@@ -15,3 +15,12 @@ app.get("/about", (req, res) => {
   res.sendFile("./views/about.html", { root: __dirname });
 });
 
+// redirects
+app.get("/about-us", (req, res) => {
+  res.redirect("/about");
+});
+
+// 404 error
+app.use((req, res) => {
+  res.status(404).sendFile("./views/404.html", { root: __dirname });
+});
