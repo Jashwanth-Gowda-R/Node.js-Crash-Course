@@ -1,9 +1,14 @@
 const http = require("http");
 const fs = require("fs");
+const _ = require("lodash");
 
 const server = http.createServer((req, res) => {
   console.log("request made");
   console.log(req.url, req.method);
+
+  //   lodash
+  const random = _.random(1, 40);
+  console.log(random);
 
   //   res.setHeader("Content-Type", "text/plain");
   //   res.write("Hello Shanis");
