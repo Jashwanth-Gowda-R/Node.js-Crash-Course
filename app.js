@@ -92,6 +92,16 @@ app.get("/blogs/:id", (req, res) => {
       console.log(e);
     });
 });
+app.delete("/blogs/:id", (req, res) => {
+  const id = req.params.id;
+  Blog.findByIdAndDelete(id)
+    .then((result) => {
+      res.json({ redirect: "/blogs" });
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+});
 
 // middleware for 404 page
 app.use((req, res) => {
