@@ -63,6 +63,10 @@ app.get("/blogs", (req, res) => {
     });
 });
 
+app.get("/blogs/create", (req, res) => {
+  res.render("create", { title: "New Blog" });
+});
+
 // blog post
 app.post("/blogs", (req, res) => {
   //   console.log(req.body);
@@ -87,10 +91,6 @@ app.get("/blogs/:id", (req, res) => {
     .catch((e) => {
       console.log(e);
     });
-});
-
-app.get("/blogs/create", (req, res) => {
-  res.render("create", { title: "New Blog" });
 });
 
 // middleware for 404 page
