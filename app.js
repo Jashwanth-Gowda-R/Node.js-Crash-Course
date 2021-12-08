@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+const Blog = require("./models/blog");
 
 // express app
 const app = express();
@@ -79,6 +80,32 @@ app.get("/about", (req, res) => {
 // redirects
 app.get("/blogs/create", (req, res) => {
   res.render("create", { title: "New Blog" });
+});
+app.get("/add-blog", (req, res) => {
+  const blog = new Blog({
+    title: "my 2nd blog post",
+    snippet: "Dolor eos dolor duo sit voluptua sea, magna sanctus justo.",
+    body: "Est sea nonumy duo sit invidunt justo sit clita. Elitr vero lorem aliquyam sadipscing, dolor elitr stet et erat eirmod eos amet clita duo. Sea.",
+  });
+  blog
+    .save()
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+// retrive all blog items
+app.get("/all-blogs", (req, res) => {
+  Blog.find()
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((e) => {
+      console.log(e);
+    });
 });
 
 // 404 error
