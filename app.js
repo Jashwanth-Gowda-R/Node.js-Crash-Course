@@ -77,6 +77,18 @@ app.post("/blogs", (req, res) => {
     });
 });
 
+// find post by id
+app.get("/blogs/:id", (req, res) => {
+  const id = req.params.id;
+  Blog.findById(id)
+    .then((result) => {
+      res.render("details", { title: "My Blog Details", blog: result });
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+});
+
 app.get("/blogs/create", (req, res) => {
   res.render("create", { title: "New Blog" });
 });
