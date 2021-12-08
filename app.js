@@ -30,6 +30,9 @@ app.set("view engine", "ejs");
 // middleware for static files
 app.use(express.static("public"));
 
+// for posting form data
+app.use(express.urlencoded({ extended: true }));
+
 // middleware for logging
 app.use(morgan("dev"));
 
@@ -54,6 +57,20 @@ app.get("/blogs", (req, res) => {
     .sort({ createdAt: -1 })
     .then((result) => {
       res.render("index", { title: "All Blogs", blogs: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+// blog post
+app.post("/blogs", (req, res) => {
+  //   console.log(req.body);
+  const blog = new Blog(req.body);
+  blog
+    .save()
+    .then((result) => {
+      res.redirect("/blogs");
     })
     .catch((err) => {
       console.log(err);
