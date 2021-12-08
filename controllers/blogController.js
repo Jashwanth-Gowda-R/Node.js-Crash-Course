@@ -19,6 +19,7 @@ const blog_details = (req, res) => {
     })
     .catch((err) => {
       console.log(err);
+      res.status(404).render("404", { title: "Not Found!" });
     });
 };
 
@@ -36,7 +37,6 @@ const blog_create_post = (req, res) => {
     .catch((err) => {
       console.log(err);
     });
-    
 };
 
 const blog_delete = (req, res) => {
